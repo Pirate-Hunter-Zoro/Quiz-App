@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_app/questions_screen.dart';
+import 'package:quizz_app/question_widgets/questions_screen.dart';
+import 'package:quizz_app/results_screen.dart';
 import 'package:quizz_app/start_screen.dart';
+
+const int numScreens = 5;
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -12,13 +15,26 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  var activeScreen = 'start-screen';
+  int activeScreenIdx = 0;
+  List<Widget> nextScreens = [];
 
   // The widget will rebuild accordingly
-  void switchScreen() {
+  void switchScreen(int i) {
     setState(() {
-      activeScreen = 'questions-screen';
+      activeScreenIdx = (i + 1) % numScreens;
     });
+  }
+
+  @override
+  void initState() {
+    nextScreens = [
+      StartScreen(switchScreen),
+      QuestionsScreen(0, switchScreen),
+      QuestionsScreen(1, switchScreen),
+      QuestionsScreen(2, switchScreen),
+      ResultsScreen(switchScreen),
+    ];
+    super.initState();
   }
 
   @override
@@ -34,9 +50,8 @@ class _QuizState extends State<Quiz> {
               colors: [Colors.deepPurple, Colors.purpleAccent],
             ),
           ),
-          child: (activeScreen == 'start-screen')
-              ? StartScreen(switchScreen)
-              : const QuestionsScreen(), // Whatever that may be depending on if we have hit a button on the start screen or not
+          child: nextScreens[
+              activeScreenIdx], // Whatever that may be depending on if we have hit a button on the start screen or not
         ),
       ),
     );

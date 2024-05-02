@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/data/questions.dart';
 
-class StartScreen extends StatelessWidget {
+class ResultsScreen extends StatelessWidget {
   final void Function(int i) switchScreen;
 
-  const StartScreen(this.switchScreen, {super.key});
+  const ResultsScreen(this.switchScreen, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +13,15 @@ class StartScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
-            'assets/images/shonen-jump.png',
+            'assets/images/my-neighbor-totoro.png',
             width: 300,
           ),
           const SizedBox(
             height: 80,
           ),
-          const Text(
-            'Let\'s test your anime taste!',
-            style: TextStyle(
+          Text(
+            'You got $correct questions correct!',
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
             ),
@@ -30,7 +31,8 @@ class StartScreen extends StatelessWidget {
           ),
           OutlinedButton.icon(
             onPressed: () {
-              switchScreen(0);
+              correct = 0;
+              switchScreen(4);
             },
             style: OutlinedButton.styleFrom(
               backgroundColor: Colors.deepPurple,
@@ -38,7 +40,7 @@ class StartScreen extends StatelessWidget {
             ),
             icon: const Icon(Icons.arrow_right),
             label: const Text(
-              'Start Quiz',
+              'Return Home',
               style: TextStyle(
                 fontSize: 15,
               ),

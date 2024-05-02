@@ -1,5 +1,7 @@
 import 'package:quizz_app/models/quiz_question.dart';
 
+int correct = 0;
+
 const questions = [
   QuizQuestion(
     'Who is the captain of the Straw Hat Pirates?',
@@ -9,6 +11,7 @@ const questions = [
       'Trafalgar D. Law',
       'Sabo',
     ],
+    1,
     'assets/images/luffy.png',
   ),
   QuizQuestion(
@@ -19,16 +22,18 @@ const questions = [
       'Fuegolian Vermillion',
       'Zora Ideale',
     ],
+    0,
     'assets/images/yami.png',
   ),
   QuizQuestion(
-    'Which Studio Ghibli film was the best one?',
+    'Which Miyazaki film was the best one?',
     [
       'Howl\'s Moving Castle',
       'Spirited Away',
       'Castle in the Sky',
       'Princess Mononoke'
     ],
+    3,
     'assets/images/mononoke.png',
   ),
 ];
