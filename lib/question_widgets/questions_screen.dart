@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quizz_app/data/questions.dart';
 import 'package:quizz_app/question_widgets/answer_button.dart';
 
@@ -14,43 +15,32 @@ class QuestionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      margin: const EdgeInsets.all(20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(questions[questionIdx].text),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            questionIdx,
-            0,
-            switchScreen,
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            questionIdx,
-            1,
-            switchScreen,
+          Text(
+            questions[questionIdx].question,
+            style: GoogleFonts.lato(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(
             height: 30,
           ),
-          AnswerButton(
-            questionIdx,
-            2,
-            switchScreen,
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            questionIdx,
-            3,
-            switchScreen,
-          ),
+          ...questions[questionIdx].getShuffledAnswers().map(
+                (answer) => AnswerButton(
+                  questionIdx,
+                  answer,
+                  switchScreen,
+                ),
+              ),
           const SizedBox(
             height: 30,
           ),

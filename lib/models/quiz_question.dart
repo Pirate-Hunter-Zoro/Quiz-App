@@ -1,8 +1,17 @@
 class QuizQuestion {
-  final String text;
+  final String question;
   final List<String> answers;
   final String imagePath;
-  final int correctAnswer;
+  String? correctAnswer;
 
-  const QuizQuestion(this.text, this.answers, this.correctAnswer, this.imagePath);
+  QuizQuestion(
+      this.question, this.answers, int correctAnswerIdx, this.imagePath) {
+    correctAnswer = answers[correctAnswerIdx];
+  }
+
+  List<String> getShuffledAnswers() {
+    List<String> shuffled = List.of(answers);
+    shuffled.shuffle();
+    return shuffled;
+  }
 }

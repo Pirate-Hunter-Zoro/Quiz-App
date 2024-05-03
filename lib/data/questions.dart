@@ -2,7 +2,7 @@ import 'package:quizz_app/models/quiz_question.dart';
 
 int correct = 0;
 
-const questions = [
+List<QuizQuestion> questions = [
   QuizQuestion(
     'Who is the captain of the Straw Hat Pirates?',
     [
