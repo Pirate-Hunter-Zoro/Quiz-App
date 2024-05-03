@@ -25,6 +25,7 @@ class AnswerButton extends StatelessWidget {
       ),
       onPressed: () {
         // Record if answer is correct
+        questions[questionIdx].enteredAnswer = answer;
         if (answer == questions[questionIdx].correctAnswer) {
           correct++;
         }

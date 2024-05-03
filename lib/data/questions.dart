@@ -12,6 +12,7 @@ List<QuizQuestion> questions = [
       'Sabo',
     ],
     1,
+    1,
     'assets/images/luffy.png',
   ),
   QuizQuestion(
@@ -23,6 +24,7 @@ List<QuizQuestion> questions = [
       'Zora Ideale',
     ],
     0,
+    2,
     'assets/images/yami.png',
   ),
   QuizQuestion(
@@ -33,6 +35,7 @@ List<QuizQuestion> questions = [
       'Castle in the Sky',
       'Princess Mononoke'
     ],
+    3,
     3,
     'assets/images/mononoke.png',
   ),
